@@ -3,6 +3,7 @@ import { CommonModule } from "@angular/common";
 import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+import { PlantlistModule } from "./plantlist/plantlist.module";
 
 @NgModule({
   declarations: [],
@@ -13,6 +14,7 @@ import { StoreDevtoolsModule } from "@ngrx/store-devtools";
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
     }),
+    PlantlistModule,
   ],
 })
 export class RootStoreModule {}

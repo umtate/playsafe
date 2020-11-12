@@ -2,17 +2,21 @@ import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatTableDataSource } from "@angular/material/table";
 
+import { FacadeService } from "../../shared";
+
 @Component({
   selector: "app-plantlist",
   templateUrl: "./plantlist.component.html",
   styleUrls: ["./plantlist.component.scss"],
 })
 export class PlantlistComponent implements OnInit, AfterViewInit {
-  constructor() {}
+  constructor(private _facade: FacadeService) {}
   displayedColumns: string[] = ["position", "name", "weight", "symbol"];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this._facade.loadPlants();
+  }
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 

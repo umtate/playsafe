@@ -3,10 +3,6 @@ import { Component } from "@angular/core";
 @Component({
   selector: "app-container",
   template: `<router-outlet></router-outlet>`,
-  styles: [
-    ".container{ margin: 20px; display: flex; justify-content: center;  align-items: center;}",
-  ],
+  styles: [""],
 })
-export class ContainerComponent {
-  title = "convertor";
-}
+export class ContainerComponent {}
