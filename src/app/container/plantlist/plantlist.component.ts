@@ -45,11 +45,10 @@ export class PlantlistComponent implements OnInit, AfterViewInit {
             };
             ELEMENT_DATA.push(newPlant);
           });
-          console.log(ELEMENT_DATA);
           this.dataSource = new MatTableDataSource<PlantsInterface>(
             ELEMENT_DATA
           );
-          this.dataSource.paginator = this.paginator;
+          setTimeout(() => (this.dataSource.paginator = this.paginator));
         });
     });
   }
