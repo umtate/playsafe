@@ -3,7 +3,4 @@ import { PlantsState } from "./plantlist.reducer";
 
 const plants = createFeatureSelector<PlantsState>("plants");
 
-export const getCurrencyRates = createSelector(
-  plants,
-  (state) => state.payload
-);
+export const getPlantsList = createSelector(plants, (state) => state.payload);

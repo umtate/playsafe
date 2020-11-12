@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 import { PlantsService } from "./plants.service";
 
 @Injectable({
@@ -7,7 +8,8 @@ import { PlantsService } from "./plants.service";
 export class FacadeService {
   constructor(private _plants: PlantsService) {}
 
-  loadPlants() {
-    this._plants.getPlant();
+  async loadPlants(): Promise<Observable<any>> {
+    await this._plants.loadPlants();
+    return this._plants.getPlants();
   }
 }
