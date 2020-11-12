@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 
 @Component({
   selector: "app-container",
-  template: `<div class="container"><router-outlet></router-outlet></div> `,
+  template: `<router-outlet></router-outlet>`,
   styles: [
     ".container{ margin: 20px; display: flex; justify-content: center;  align-items: center;}",
   ],
