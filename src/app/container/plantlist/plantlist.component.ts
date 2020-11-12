@@ -31,20 +31,9 @@ export class PlantlistComponent implements OnInit, AfterViewInit {
           filter((x) => !!x),
           take(1)
         )
-        .subscribe((values) => {
-          const ELEMENT_DATA: PlantsInterface[] = [];
+        .subscribe((plants) => {
+          const ELEMENT_DATA: PlantsInterface[] = plants;
 
-          values?.forEach((plant) => {
-            const newPlant = {
-              common_name: plant?.common_name,
-              plant_type: plant?.plant_type,
-              bloom_time: plant?.bloom_time,
-              flower_color: plant?.flower_color,
-              soil_type: plant?.soil_type,
-              habitat_value: plant?.habitat_value,
-            };
-            ELEMENT_DATA.push(newPlant);
-          });
           this.dataSource = new MatTableDataSource<PlantsInterface>(
             ELEMENT_DATA
           );
