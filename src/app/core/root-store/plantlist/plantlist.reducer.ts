@@ -59,7 +59,6 @@ export function plantsReducer(
 
     case fromActions.PlantsActionTypes.ADD_PLANT_SUCCESS: {
       const newPlant = action.payload;
-      console.log(state);
       return {
         ...state,
         payload: [...state.payload, newPlant],

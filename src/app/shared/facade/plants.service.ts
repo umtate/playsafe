@@ -43,4 +43,8 @@ export class PlantsService {
   addPlant(plant) {
     return this._store.dispatch(new AddPlant(plant));
   }
+
+  plantAdding() {
+    return this._store.select("plants").pipe(pluck("added"));
+  }
 }

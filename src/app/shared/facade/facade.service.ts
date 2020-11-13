@@ -13,7 +13,8 @@ export class FacadeService {
     return this._plants.getPlants();
   }
 
-  addPlant(plant) {
-    this._plants.addPlant(plant);
+  async addPlant(plant): Promise<Observable<any>> {
+    await this._plants.addPlant(plant);
+    return this._plants.plantAdding();
   }
 }

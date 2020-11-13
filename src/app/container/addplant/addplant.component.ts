@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
+import { take } from "rxjs/operators";
 import { FacadeService } from "../../shared";
 
 @Component({
@@ -8,10 +10,15 @@ import { FacadeService } from "../../shared";
   styleUrls: ["./addplant.component.scss"],
 })
 export class AddplantComponent implements OnInit {
-  constructor(private _fb: FormBuilder, private _facade: FacadeService) {}
+  constructor(
+    private _fb: FormBuilder,
+    private _facade: FacadeService,
+    private _router: Router
+  ) {}
 
   season = ["summer", "winter", "autumn", "spring"];
   type = ["shrub", "tree", "grass", "perennial"];
+  added: Boolean = false;
 
   plantForm = this._fb.group({
     common_name: ["", [Validators.required, Validators.maxLength(25)]],
@@ -28,7 +35,11 @@ export class AddplantComponent implements OnInit {
   ngOnInit(): void {}
 
   submit() {
-    console.log(this.plantForm.value);
-    this._facade.addPlant(this.plantForm.value);
+    if (this.plantForm.valid)
+      this._facade.addPlant(this.plantForm.value).then((value) => {
+        value.pipe(take(1)).subscribe((status) => {
+          if (status) this._router.navigateByUrl("./plants");
+        });
+      });
   }
 }
