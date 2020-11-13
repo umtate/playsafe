@@ -1,8 +1,28 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Inject, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { take } from "rxjs/operators";
+import { MatDialog, MatDialogRef } from "@angular/material/dialog";
+
 import { FacadeService } from "../../shared";
+
+@Component({
+  selector: "dialog-overview-example",
+  template: ` <div mat-dialog-content>
+      <p>Your plant was added successfully</p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeDialog()" cdkFocusInitial>Close</button>
+    </div>`,
+})
+export class DialogBox {
+  constructor(public dialog: MatDialog, private _router: Router) {}
+
+  closeDialog() {
+    this.dialog.closeAll();
+    this._router.navigateByUrl("./plants");
+  }
+}
 
 @Component({
   selector: "app-addplant",
@@ -13,7 +33,9 @@ export class AddplantComponent implements OnInit {
   constructor(
     private _fb: FormBuilder,
     private _facade: FacadeService,
-    private _router: Router
+
+    public dialogRef: MatDialogRef<AddplantComponent>,
+    public dialog: MatDialog
   ) {}
 
   season = ["summer", "winter", "autumn", "spring"];
@@ -38,7 +60,10 @@ export class AddplantComponent implements OnInit {
     if (this.plantForm.valid)
       this._facade.addPlant(this.plantForm.value).then((value) => {
         value.pipe(take(1)).subscribe((status) => {
-          if (status) this._router.navigateByUrl("./plants");
+          if (status)
+            this.dialog.open(DialogBox, {
+              width: "250px",
+            }); //;
         });
       });
   }

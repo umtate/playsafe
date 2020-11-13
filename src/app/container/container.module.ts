@@ -9,6 +9,7 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSelectModule } from "@angular/material/select";
 import { MatButtonModule } from "@angular/material/button";
+import { MatDialogModule, MatDialogRef } from "@angular/material/dialog";
 
 import { PlantlistComponent } from "./plantlist/plantlist.component";
 import { AddplantComponent } from "./addplant/addplant.component";
@@ -33,6 +34,13 @@ import { ContainerComponent } from "./container.component";
     MatFormFieldModule,
     MatSelectModule,
     MatButtonModule,
+    MatDialogModule,
+  ],
+  providers: [
+    {
+      provide: MatDialogRef,
+      useValue: {},
+    },
   ],
 })
 export class ContainerModule {}
