@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { filter, map, pluck, take } from "rxjs/operators";
+import { GetFilter } from "src/app/core/root-store/filter";
 import { AddPlant, GetPlants } from "src/app/core/root-store/plantlist";
 
 @Injectable({
@@ -46,5 +47,9 @@ export class PlantsService {
 
   plantAdding() {
     return this._store.select("plants").pipe(pluck("added"));
+  }
+
+  filterPlants(filters) {
+    this._store.dispatch(new GetFilter(filters));
   }
 }

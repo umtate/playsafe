@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { take } from "rxjs/operators";
@@ -40,7 +40,6 @@ export class AddplantComponent implements OnInit {
 
   season = ["summer", "winter", "autumn", "spring"];
   type = ["shrub", "tree", "grass", "perennial"];
-  added: Boolean = false;
 
   plantForm = this._fb.group({
     common_name: ["", [Validators.required, Validators.maxLength(25)]],

@@ -17,4 +17,8 @@ export class FacadeService {
     await this._plants.addPlant(plant);
     return this._plants.plantAdding();
   }
+
+  filter(payload) {
+    this._plants.filterPlants(payload);
+  }
 }

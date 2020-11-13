@@ -1,1 +1,46 @@
-<p>filterplants works!</p>
+<div class="example-container">
+  <form [formGroup]="filterForm" (ngSubmit)="submit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Season</mat-label>
+      <mat-select formControlName="bloom_time">
+        <mat-option *ngFor="let time of season" [value]="time">{{
+          time
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Types</mat-label>
+      <mat-select formControlName="plant_type">
+        <mat-option *ngFor="let plant of type" [value]="plant">{{
+          plant.length ? plant : "None"
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Location</mat-label>
+      <mat-select formControlName="appropriate_location">
+        <mat-option *ngFor="let loc of location" [value]="loc">{{
+          loc.length ? loc : "None"
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Value</mat-label>
+      <mat-select formControlName="habitat_value">
+        <mat-option *ngFor="let val of value" [value]="val">{{
+          val.length ? val : "None"
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-stroked-button color="primary" type="submit">Submit</button>
+  </form>
+</div>
+
+<mat-list>
+  <mat-list-item> Pepper </mat-list-item>
+  <mat-list-item> Salt </mat-list-item>
+  <mat-list-item> Paprika </mat-list-item>
+</mat-list>
