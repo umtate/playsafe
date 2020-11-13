@@ -52,4 +52,8 @@ export class PlantsService {
   filterPlants(filters) {
     this._store.dispatch(new GetFilter(filters));
   }
+
+  getFilteredData() {
+    return this._store.select("filter").pipe(pluck("payload"));
+  }
 }

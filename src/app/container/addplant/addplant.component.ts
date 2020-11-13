@@ -7,7 +7,7 @@ import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { FacadeService } from "../../shared";
 
 @Component({
-  selector: "dialog-overview-example",
+  selector: "dialog-overviews",
   template: ` <div mat-dialog-content>
       <p>Your plant was added successfully</p>
     </div>

@@ -18,7 +18,8 @@ export class FacadeService {
     return this._plants.plantAdding();
   }
 
-  filter(payload) {
-    this._plants.filterPlants(payload);
+  async filter(payload): Promise<Observable<any>> {
+    await this._plants.filterPlants(payload);
+    return this._plants.getFilteredData();
   }
 }
