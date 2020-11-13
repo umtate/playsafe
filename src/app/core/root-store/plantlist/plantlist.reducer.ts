@@ -4,6 +4,8 @@ export interface PlantsState {
   payload: any;
   loading: boolean;
   loaded: boolean;
+  adding: boolean;
+  added: boolean;
   error: any;
 }
 
@@ -11,12 +13,14 @@ const initialState: PlantsState = {
   payload: null,
   loading: false,
   loaded: false,
+  adding: false,
+  added: false,
   error: null,
 };
 
 export function plantsReducer(
   state = initialState,
-  action: fromActions.currencyActions
+  action: fromActions.plantActions
 ) {
   switch (action.type) {
     case fromActions.PlantsActionTypes.GET_PLANTS: {
@@ -42,6 +46,25 @@ export function plantsReducer(
         error: err,
         loading: false,
         loaded: true,
+      };
+    }
+
+    case fromActions.PlantsActionTypes.ADD_PLANT: {
+      return {
+        ...state,
+        adding: true,
+        added: false,
+      };
+    }
+
+    case fromActions.PlantsActionTypes.ADD_PLANT_SUCCESS: {
+      const newPlant = action.payload;
+      console.log(state);
+      return {
+        ...state,
+        payload: [...state.payload, newPlant],
+        adding: false,
+        added: true,
       };
     }
     default:

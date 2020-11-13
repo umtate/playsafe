@@ -19,4 +19,15 @@ export class PlantsEffects {
       );
     })
   );
+
+  @Effect()
+  addPlant$ = this.actions$.pipe(
+    ofType(plantsActions.PlantsActionTypes.ADD_PLANT),
+    switchMap((action: plantsActions.AddPlant) => {
+      const payload = action.payload;
+      return this._plants
+        .addPlant(payload)
+        .pipe(switchMap((res) => of(new plantsActions.AddPlantSuccess(res))));
+    })
+  );
 }

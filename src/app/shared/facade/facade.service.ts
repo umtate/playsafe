@@ -12,4 +12,8 @@ export class FacadeService {
     await this._plants.loadPlants();
     return this._plants.getPlants();
   }
+
+  addPlant(plant) {
+    this._plants.addPlant(plant);
+  }
 }

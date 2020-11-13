@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { filter, map, pluck, take } from "rxjs/operators";
-import { GetPlants } from "src/app/core/root-store/plantlist";
+import { AddPlant, GetPlants } from "src/app/core/root-store/plantlist";
 
 @Injectable({
   providedIn: "root",
@@ -38,5 +38,9 @@ export class PlantsService {
         return arr;
       })
     );
+  }
+
+  addPlant(plant) {
+    return this._store.dispatch(new AddPlant(plant));
   }
 }
