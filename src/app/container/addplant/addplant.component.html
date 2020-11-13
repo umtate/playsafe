@@ -1,47 +1,45 @@
+<h1>Add Plant</h1>
 <form [formGroup]="plantForm" (ngSubmit)="submit()">
-  <div class="example-container">
-    <mat-form-field appearance="fill">
-      <mat-label>Common name</mat-label>
-      <textarea matInput type="text" formControlName="common_name"></textarea>
-    </mat-form-field>
-    <br />
+  <mat-form-field appearance="fill">
+    <mat-label>Common name</mat-label>
+    <textarea matInput type="text" formControlName="common_name"></textarea>
+  </mat-form-field>
+  <br />
 
-    <mat-form-field appearance="fill">
-      <mat-label>Plant type</mat-label>
-      <mat-select formControlName="plant_type">
-        <mat-option *ngFor="let plant of type" [value]="plant">{{
-          plant
-        }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Bloom time</mat-label>
-      <mat-select formControlName="bloom_time">
-        <mat-option *ngFor="let time of season" [value]="time">{{
-          time
-        }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <br />
+  <mat-form-field appearance="fill">
+    <mat-label>Plant type</mat-label>
+    <mat-select formControlName="plant_type">
+      <mat-option *ngFor="let plant of type" [value]="plant">{{
+        plant
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Bloom time</mat-label>
+    <mat-select formControlName="bloom_time">
+      <mat-option *ngFor="let time of season" [value]="time">{{
+        time
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br />
 
-    <mat-form-field appearance="fill">
-      <mat-label>Flower color</mat-label>
-      <input matInput type="text" formControlName="flower_color" />
-    </mat-form-field>
-    <br />
+  <mat-form-field appearance="fill">
+    <mat-label>Flower color</mat-label>
+    <input matInput type="text" formControlName="flower_color" />
+  </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Soil type</mat-label>
-      <input matInput type="text" formControlName="soil_type" />
-    </mat-form-field>
-    <br />
+  <mat-form-field appearance="fill">
+    <mat-label>Soil type</mat-label>
+    <input matInput type="text" formControlName="soil_type" />
+  </mat-form-field>
+  <br />
 
-    <mat-form-field appearance="fill">
-      <mat-label>Habitat value</mat-label>
-      <input matInput type="text" formControlName="habitat_value" />
-    </mat-form-field>
-    <br />
-  </div>
+  <mat-form-field appearance="fill">
+    <mat-label>Habitat value</mat-label>
+    <input matInput type="text" formControlName="habitat_value" />
+  </mat-form-field>
+  <br />
 
   <button mat-stroked-button color="primary">Submit</button>
 </form>

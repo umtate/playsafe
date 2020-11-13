@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatTableDataSource } from "@angular/material/table";
+import { Observable } from "rxjs";
 import { filter, take } from "rxjs/operators";
 
 import { FacadeService } from "../../shared";
@@ -22,9 +23,12 @@ export class PlantlistComponent implements OnInit, AfterViewInit {
   ];
   dataSource;
 
+  loaded: Observable<boolean>;
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit(): void {
+    this.loaded = this._facade.loading();
     this._facade.loadPlants().then((res) => {
       res
         .pipe(

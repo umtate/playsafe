@@ -11,6 +11,7 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatButtonModule } from "@angular/material/button";
 import { MatListModule } from "@angular/material/list";
 import { MatDialogModule, MatDialogRef } from "@angular/material/dialog";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 import { PlantlistComponent } from "./plantlist/plantlist.component";
 import { AddplantComponent } from "./addplant/addplant.component";
@@ -37,6 +38,7 @@ import { ContainerComponent } from "./container.component";
     MatButtonModule,
     MatDialogModule,
     MatListModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
     {

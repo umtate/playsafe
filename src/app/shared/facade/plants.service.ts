@@ -56,4 +56,8 @@ export class PlantsService {
   getFilteredData() {
     return this._store.select("filter").pipe(pluck("payload"));
   }
+
+  loadingData() {
+    return this._store.select("plants").pipe(pluck("loaded"));
+  }
 }

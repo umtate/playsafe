@@ -1,4 +1,4 @@
-<h1>Quick Table Search Functionality</h1>
+<h1>Table Search Filter</h1>
 <form [formGroup]="filterForm" (ngSubmit)="submit()">
   <mat-form-field appearance="fill">
     <mat-label>Season</mat-label>
@@ -26,6 +26,7 @@
       }}</mat-option>
     </mat-select>
   </mat-form-field>
+
   <mat-form-field appearance="fill">
     <mat-label>Value</mat-label>
     <mat-select formControlName="habitat_value">
@@ -35,7 +36,9 @@
     </mat-select>
   </mat-form-field>
 
-  <button mat-stroked-button color="primary" type="submit">Submit</button>
+  <div>
+    <button mat-stroked-button color="primary" type="submit">Submit</button>
+  </div>
 </form>
 
 <mat-list *ngIf="filtered | async as data">

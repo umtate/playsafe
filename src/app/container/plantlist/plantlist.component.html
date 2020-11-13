@@ -1,4 +1,5 @@
 <h1>Plants Table</h1>
+<div *ngIf="loaded | async; else loader"></div>
 <div class="mat-elevation-z8" *ngIf="dataSource">
   <table mat-table [dataSource]="dataSource">
     <!-- Position Column -->
@@ -46,3 +47,4 @@
     showFirstLastButtons
   ></mat-paginator>
 </div>
+<ng-template #loader><mat-spinner></mat-spinner></ng-template>

@@ -22,4 +22,8 @@ export class FacadeService {
     await this._plants.filterPlants(payload);
     return this._plants.getFilteredData();
   }
+
+  loading() {
+    return this._plants.loadingData();
+  }
 }
