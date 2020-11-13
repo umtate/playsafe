@@ -3,18 +3,18 @@ import { HttpClientModule } from "@angular/common/http";
 
 import { HttpClient } from "@angular/common/http";
 
-import { GetPlantsService } from "./get-plants.service";
+import { FilterPlantsService } from "./filter-plants.service";
 import { filter, take } from "rxjs/operators";
 
-describe("GetPlantsService", () => {
-  let service: GetPlantsService;
+describe("FilterPlantsService", () => {
+  let service: FilterPlantsService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [HttpClient],
       imports: [HttpClientModule],
     });
-    service = TestBed.inject(GetPlantsService);
+    service = TestBed.inject(FilterPlantsService);
   });
 
   it("should be created", () => {
@@ -22,8 +22,14 @@ describe("GetPlantsService", () => {
   });
 
   it("should be defined", () => {
+    let filter = {
+      common_name: "Maize",
+      plant_type: "Grass",
+      bloom_time: "Summer",
+    };
+
     service
-      .getPlants()
+      .filterPlants(filter)
       .pipe(take(1))
       .subscribe((value) => expect(value).toBeDefined());
   });
